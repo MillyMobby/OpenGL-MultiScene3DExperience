@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<info>
+	<View>
+		<Window title="POG" width="2000" height="1000"/>
+		<Background>
+			1.0, 1.0, 0.5, 1.0
+		</Background>
+	</View>
+	
+<Scenes>
+
+	<Scene name ="triangolo">
+		<Camera fovH="125" near="0.1" far="100.0">
+			0.0, 0.0, 25.0,
+			0.0, 0.0, 1.0,
+			0.0, 1.0, 0.0
+		</Camera>
+
+		<Materials>
+		
+			<Material name="matTexture"  vs = "image.vert" fs = "image.frag">
+				<Sampler name="tex2" type = "GL_TEXTURE_2D" texUnit ="0" textureName="logo" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					D:\moon.jpg
+				</Sampler>
+				<Sampler name="tex1" type = "GL_TEXTURE_2D" texUnit ="1" textureName="moon" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					D:\checkerboard.png
+				</Sampler>
+			</Material>
+		</Materials>
+		
+		<Objects>
+			<Object name="triangle" material="matTexture" visible="1" path="">
+
+				<Mesh numVertices="3" hasPosition="1" hasTextureCoords0="1" hasVertexColors="1" hasNormals="0">
+
+					<Vertices>
+						-0.5, -0.5, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0,
+						0.5, -0.5, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0,
+						0.0, 0.5, 1.0, 0.5, 1.0, 0.0, 0.0, 1.0
+					</Vertices>
+
+					<Faces>
+						0, 1, 2
+					</Faces>
+				</Mesh>
+			
+				<Trasformation>
+					<Scale>
+						0.5, 0.5, 0.5
+					</Scale>
+					<Translate>
+						0.0, 0.0, 2.0
+					</Translate>
+				</Trasformation>
+		</Object>
+	</Objects>
+	</Scene>
+
+	
+	<Scene name ="sistemaSolare">
+		<Triggers>
+			<Trigger object = "" nextScene ="stanza"></Trigger>
+		</Triggers>
+		<Camera fovH="45" near="0.1" far="300.0">
+		0.0, 5.0, 10.0,
+		0.0, 0.0, 0.0,
+		0.0, 1.0, 0.0
+		</Camera>
+		
+		<Materials>
+			<Material name="cubeMap"  vs ="cubemap.vert" fs = "cubemap.frag" >
+				<Sampler name="skybox" type = "GL_TEXTURE_CUBE_MAP" texUnit ="0" textureName="room" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\cielo.jpg
+					..\textures\cielo.jpg
+					..\textures\cielo.jpg
+					..\textures\cielo.jpg
+					..\textures\cielo.jpg
+					..\textures\cielo.jpg
+				</Sampler>
+			</Material>
+			<Material name="venere"  vs = "planet.vert" fs = "planet.frag">
+				<Sampler name="venus" type = "GL_TEXTURE_2D" texUnit ="0" textureName="venus" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\venus.jpg
+				</Sampler>
+				
+			</Material>
+			<Material name="mercurio"  vs = "planet.vert" fs = "planet.frag">
+				<Sampler name="mercury" type = "GL_TEXTURE_2D" texUnit ="0" textureName="mercury" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\mercury.jpg
+				</Sampler>
+				
+			</Material>
+			<Material name="earthMat"  vs = "normalMap.vert" fs = "normalMap.frag">
+				<Sampler name="colorTex" type = "GL_TEXTURE_2D" texUnit ="0" textureName="earth_color" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\earthColor.jpg
+				</Sampler>
+				<Sampler name="normalMap" type = "GL_TEXTURE_2D" texUnit ="1" textureName="earth_normal" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\earthNormal.jpg
+				</Sampler>
+			</Material>
+		
+			<Material name="mars"  vs = "normalMap.vert" fs = "normalMap.frag">
+				<Sampler name="tex" type = "GL_TEXTURE_2D" texUnit ="0" textureName="aaa" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\marteColor.jpg
+				</Sampler>
+				<Sampler name="normal" type = "GL_TEXTURE_2D" texUnit ="1" textureName="aaaaaa" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\marte.jpg
+				</Sampler>
+			</Material>
+			<Material name="giove"  vs = "planet.vert" fs = "planet.frag">
+				<Sampler name="jupiters" type = "GL_TEXTURE_2D" texUnit ="0" textureName="giove" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\giove.jpg
+				</Sampler>
+				
+			</Material>
+			<Material name="sun"  vs = "planet.vert" fs = "planet.frag">
+				<Sampler name="sun" type = "GL_TEXTURE_2D" texUnit ="0" textureName="sole" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_BORDER" wrapR="GL_CLAMP_TO_BORDER">
+					..\textures\sun.jpg
+				</Sampler>
+			</Material>
+			<Material name="saturno"  vs = "planet.vert" fs = "planet.frag">
+				
+				<Sampler name="sat" type = "GL_TEXTURE_2D" texUnit ="0" textureName="saturn" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\Saturn.jpg
+				</Sampler>
+			</Material>
+			
+			<Material name="urano"  vs = "planet.vert" fs = "planet.frag">	
+				<Sampler name="uranus" type = "GL_TEXTURE_2D" texUnit ="0" textureName="uranus" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\uranus.jpg
+				</Sampler>
+			</Material>
+			<Material name="nettuno"  vs = "planet.vert" fs = "planet.frag">	
+				<Sampler name="neptune" type = "GL_TEXTURE_2D" texUnit ="0" textureName="neptune" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\neptune.jpg
+				</Sampler>
+			</Material>
+		
+	</Materials>
+		
+		<Objects>
+			
+			<Object name="jupiter" material="giove" visible="1" rotates="1" path="..\Models\jupiter.obj">
+				<Trasformation>
+						<Scale>
+							0.1, 0.1, 0.1
+						</Scale>
+					<RotateY>
+					-90.0
+					</RotateY>
+					</Trasformation>
+			</Object>
+			<Object name="saturno" material="saturno" visible="1" rotates="1" path="..\Models\saturn.obj">
+				<Trasformation>
+						<Scale>
+						0.1, 0.1, 0.1
+						</Scale>
+					<Translate>
+							-4.0, 0.0, 0.0
+						</Translate>
+					</Trasformation>
+			</Object>
+			<Object name="venus" material="venere" visible="1" rotates="1" path="..\Models\venus.obj">
+				<Trasformation>
+						<Scale>
+						0.1, 0.1, 0.1
+						</Scale>
+					<Translate>
+							-4.0, 0.0, 0.0
+						</Translate>
+					</Trasformation>
+			</Object>
+			<Object name="mercury" material="mercurio" visible="1" rotates="1" path="..\Models\mercury.obj">
+				<Trasformation>
+						<Scale>
+						0.1, 0.1, 0.1
+						</Scale>
+					<Translate>
+							-3.0, 0.0, 0.0
+						</Translate>
+					</Trasformation>
+			</Object>
+			<Object name="urano" material="urano" visible="1" rotates="1" path="..\Models\uranus.obj">
+				<Trasformation>
+						<Scale>
+						0.1, 0.1, 0.1
+						</Scale>
+					<Translate>
+							6.0, 0.0, 0.0
+						</Translate>
+					</Trasformation>
+			</Object>
+			<Object name="nettuno" material="nettuno" visible="1" rotates="1" path="..\Models\neptune.obj">
+				<Trasformation>
+						<Scale>
+						0.1, 0.1, 0.1
+						</Scale>
+					<Translate>
+							7.0, 0.0, 5.0
+						</Translate>
+					</Trasformation>
+			</Object>
+			<Object name="moon" material="matTexture" visible="0" rotates="1" path="..\Models\moon.obj">
+					<Trasformation>
+						<Scale>
+							0.1, 0.1, 0.1
+						</Scale>
+					</Trasformation>
+				</Object>
+			<Object name="earth" material="earthMat" visible="1" rotates="1" path="..\Models\earth.obj">
+					<Trasformation>
+						<Scale>
+							0.1, 0.1, 0.1
+						</Scale>
+						<Translate>
+							3.0, 0.0, 0.0
+						</Translate>
+						<RotateY>
+							90
+						</RotateY>
+					</Trasformation>
+				</Object>
+				<Object name="mars" material="mars" visible="1" rotates="1" path="..\Models\mars.obj">
+					<Trasformation>
+						<Scale>
+							0.1, 0.1, 0.1
+						</Scale>
+				
+					</Trasformation>
+					</Object>
+		
+			<Object name="sun" material="sun" visible="1" rotates="0" path="..\Models\sun.obj">		
+				<Trasformation>
+						<Scale>
+							0.1, 0.1, 0.1
+						</Scale>
+				
+					</Trasformation>
+			</Object>
+		
+			<Object name="cuboSfondo" material="cubeMap" visible="1" path="..\Models\cubo.obj">
+			</Object>
+		
+		</Objects>
+		<Lights>
+			<Light name ="light1" position ="1.0, 1.0, 0.0" color="0.0, 0.0, 1.0" enable="0" />
+			<Light name ="sun_directionalLight" direction="1.0, 0.0, 0.0" color="1.0, 1.0, 1.0" enable="1" />
+			<Light name ="luce_blu" direction="-1.0, 0.0, 0.0" color="0.0, 0.0, 1.0" enable="0" />
+			<Light name ="ambient" color="1.0, 1.0, 1.0" enable="0" ambientFactor ="0.1"/>
+			<Light name ="flashlight" color="1.0, 1.0, 1.0" enable="0" position="1.0, 1.0, 1.0" direction="1.0, 1.0, 1.0" theta="5.0"/>
+		</Lights>		
+	</Scene>
+		
+	<Scene name ="stanza">
+		<Triggers>
+			<Trigger object = "portale" nextScene ="sistemaSolare"></Trigger>
+		</Triggers>
+		<Camera fovH="45" near="0.1" far="1000.0">
+			-30.0, 15.0, 30.0,
+			0.0, 14.0, 1.0,
+			0.0, 1.0, 0.0
+		</Camera>
+
+	<Materials>
+		<Material name="portaleTex"  vs = "portale.vert" fs = "portale.frag">
+				<Sampler name="texSprite" type = "GL_TEXTURE_2D" texUnit ="0" textureName="portale" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\portalSprite.png
+				</Sampler>
+			</Material>
+			<Material name="matTexture"  vs = "tex.vert" fs = "tex.frag">
+				<Sampler name="tex2" type = "GL_TEXTURE_2D" texUnit ="0" textureName="logo" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_REPEAT" wrapT="GL_REPEAT" wrapR="GL_REPEAT">
+					..\textures\carta.jpg
+				</Sampler>
+				<Sampler name="tex1" type = "GL_TEXTURE_2D" texUnit ="1" textureName="moon" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_REPEAT" wrapT="GL_REPEAT" wrapR="GL_REPEAT">
+					..\textures\carta.jpg
+				</Sampler>
+			</Material>
+		
+			<Material name="floor"  vs = "normal.vert" fs = "normal.frag">
+					<Sampler name="tex" type = "GL_TEXTURE_2D" texUnit ="0" textureName="pavimento" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+						..\textures\floor.jpg
+					</Sampler>
+					<Sampler name="normalMap" type = "GL_TEXTURE_2D" texUnit ="1" textureName="pavimento_normal" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+						..\textures\floor_normal.png
+					</Sampler>
+				</Material>
+
+		<Material name="coperta"  vs = "tex.vert" fs = "tex.frag">	
+				<Sampler name="coperta" type = "GL_TEXTURE_2D" texUnit ="0" textureName="coperta" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\coperta.jpg
+				</Sampler>
+			</Material>
+	<Material name="legno"  vs = "tex.vert" fs = "tex.frag">	
+				<Sampler name="legno" type = "GL_TEXTURE_2D" texUnit ="0" textureName="legno" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\legno.jpg
+				</Sampler>
+			</Material>
+	<Material name="poster1"  vs = "tex.vert" fs = "tex.frag">	
+				<Sampler name="poster1" type = "GL_TEXTURE_2D" texUnit ="0" textureName="poster1" minFilter="GL_LINEAR" magFilter="GL_LINEAR" wrapS="GL_CLAMP_TO_EDGE" wrapT="GL_CLAMP_TO_EDGE" wrapR="GL_CLAMP_TO_EDGE">
+					..\textures\poster1.jpg
+				</Sampler>
+			</Material>
+	
+		</Materials>
+		
+		<Objects>	
+			<Object name="portale" material="portaleTex" visible="1" path="">
+
+					<Mesh numVertices="4" hasPosition="1" hasTextureCoords0="1" hasVertexColors="0" hasNormals="0">
+
+						<Vertices>
+							0.6, 0.6, 0.0, 0.1, 0.0,
+							0.6, -0.4, 0.0, 0.0, 0.0,
+							-0.4, -0.4, 0.0, 0.0, 1.0,
+							-0.4, 0.6, 0.0, 0.1, 1.0
+						</Vertices>
+
+						<Faces>
+							0, 1, 3,
+							1, 2, 3
+						</Faces>
+					</Mesh>
+					<Trasformation>
+						<Scale>
+							20.0, 20.0, 20.0
+						</Scale>
+						<Translate>
+							0.0, 0.0, 0.0
+						</Translate>
+					</Trasformation>
+				</Object>
+			<Object name="coperta" material="coperta" visible="1" rotates="0" path="..\Models\coperta.obj">				
+			</Object>
+			
+			<Object name="scrivania" material="legno" visible="1" rotates="0" path="..\Models\scrivania.obj">				
+			</Object>
+			
+			<Object name="sedia" material="legno" visible="1" rotates="0" path="..\Models\sedia.obj">				
+			</Object>
+			
+			<Object name="poster1" material="poster1" visible="1" rotates="0" path="..\Models\poster1.obj">				
+			</Object>
+			
+			<Object name="poster2" material="poster1" visible="1" rotates="0" path="..\Models\poster2.obj">				
+			</Object>
+			
+			<Object name="frontarmadio" material="legno" visible="1" rotates="0" path="..\Models\frontArmadio.obj">				
+			</Object>
+			
+			<Object name="armadio" material="legno" visible="1" rotates="0" path="..\Models\armadio.obj">				
+			</Object>
+			
+			<Object name="cuscino" material="coperta" visible="1" rotates="0" path="..\Models\cuscinoSedia.obj">				
+			</Object>
+			
+			<Object name="frontcomodino" material="legno" visible="1" rotates="0" path="..\Models\frontComodino.obj">				
+			</Object>
+			
+			<Object name="comodino" material="legno" visible="1" rotates="0" path="..\Models\comodino.obj">				
+			</Object>
+			
+			<Object name="wall1" material="matTexture" visible="1" path="..\Models\wall1.obj">
+		
+			</Object>
+			
+			<Object name="wall2" material="matTexture" visible="1" path="..\Models\wall2.obj">			
+			</Object>
+				
+			<Object name="wall3" material="matTexture" visible="1" path="..\Models\wall3.obj">			
+			</Object>
+		
+			<Object name="wall4" material="matTexture" visible="1" path="..\Models\wall4.obj">			
+			</Object>
+			
+			<Object name="floor" material="floor" visible="1" path="..\Models\floor.obj">			
+			</Object>
+			<Object name="cuscinoSedia" material="coperta" visible="1" path="..\Models\cuscinoSedia.obj">
+				</Object>
+
+
+			<Object name="roof" material="matTexture" visible="1" path="..\Models\roof.obj">		
+				<Trasformation>
+						<Scale>
+							5.0, 5.0, 5.0
+						</Scale>
+						<Translate>
+							0.0, 40.0, 0.0
+						</Translate>
+					</Trasformation>
+				</Object>
+
+		</Objects>
+		
+		<Lights>
+				<Light name ="pointLight" color="1.0, 1.0, 1.0" enable="1" position="0.0, 35.0, 0.0" kc="1.0" k1="0.045" kq="0.0075"/>
+			</Lights>
+
+	</Scene>
+	
+</Scenes>
+	
+<Light name ="directionalLight"  color="1.0, 1.0, 1.0" enable="0" direction="1.0, 1.0, 0.0"/>
+<Light name ="pointLight" color="1.0, 1.0, 1.0" enable="0" position="1.0, 1.0, 1.0" kc="1.0" k1="" quadratic=""/>
+<Light name ="ambient" color="1.0, 1.0, 1.0" enable="0" ambientFactor ="0.1"/>
+<Light name ="spotLight" color="1.0, 1.0, 1.0" enable="0" position="1.0, 1.0, 1.0" direction="1.0, 1.0, 1.0" theta="5.0"/>
+</info>
+
+
