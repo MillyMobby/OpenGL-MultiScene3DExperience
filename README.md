@@ -6,15 +6,17 @@ Every scene (camera, materials, shaders, textures, 3D models, transforms and por
 
 Project by **Chiara Frascaria**, **Arianna Martinelli** and **Letizia Penne'** (Tor Vergata University of Rome), 2022.
 
+the .obj files aren't present inthe repository at the moment, but the XML file can be configured with any new scene.
+
 equirements: **Windows**, **Visual Studio 2019 or later** (C++ desktop workload), a GPU with OpenGL 3.3+.
 
 External libraries (install them and add their include/lib folders to the project properties):
 
-- [GLFW](https://www.glfw.org/) — window and input
-- [glad](https://glad.dav1d.de/) — OpenGL loader
-- [Assimp](https://github.com/assimp/assimp) — model loading (`assimp-vc142-mtd.lib`, `zlibstaticd.lib`)
-- [rapidxml](https://rapidxml.sourceforge.net/) — XML parsing
-- [stb_image](https://github.com/nothings/stb) — image loading
+- GLFW — window and input
+- glad — OpenGL loader
+- Assimp — model loading (`assimp-vc142-mtd.lib`, `zlibstaticd.lib`)
+- rapidxml  — XML parsing
+- stb_image — image loading
 
 ## Features
 
