@@ -6,7 +6,7 @@ Every scene (camera, materials, shaders, textures, 3D models, transforms and por
 
 Project by **Chiara Frascaria**, **Arianna Martinelli** and **Letizia Penne'** (Tor Vergata University of Rome), 2022.
 
-the .obj files aren't present inthe repository at the moment, but the XML file can be configured with any new scene.
+The .obj files aren't present in the repository at the moment, but the XML file can be configured with any new scene.
 
 equirements: **Windows**, **Visual Studio 2019 or later** (C++ desktop workload), a GPU with OpenGL 3.3+.
 
